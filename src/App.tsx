@@ -22,8 +22,6 @@ import { ListProducts } from "./pages/products/list";
 import { CreateProduct } from "./pages/products/create";
 import { authProvider } from "./providers/auth-provider";
 import { Login } from "./pages/login";
-import { Header } from "./components/header";
-
 // We're importing a reset.css file to reset the default styles of the browser.
 import "antd/dist/reset.css";
 

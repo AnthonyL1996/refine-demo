@@ -1,4 +1,4 @@
-import { useForm, useSelect, SaveButton, Create } from "@refinedev/antd";
+import { useForm, useSelect, Create } from "@refinedev/antd";
 
 import { Form, Input, Select, InputNumber } from "antd";
 
@@ -29,7 +29,6 @@ export const CreateProduct = () => {
         <Form.Item label="Price" name="price">
           <InputNumber step="0.01" stringMode />
         </Form.Item>
-        <SaveButton {...saveButtonProps} />
       </Form>
     </Create>
   );

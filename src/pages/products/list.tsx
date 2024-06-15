@@ -6,7 +6,6 @@ import {
     getDefaultSortOrder,
     FilterDropdown,
     useSelect,
-    List,
 } from "@refinedev/antd";
 
 import { Table, Space, Input, Select } from "antd";
@@ -37,7 +36,6 @@ export const ListProducts = () => {
     return (
         <div>
             <h1>Products</h1>
-            <List>
                 <Table {...tableProps} rowKey="id">
                     <Table.Column
                         dataIndex="id"
@@ -92,7 +90,6 @@ export const ListProducts = () => {
                         )}
                     />
                 </Table>
-            </List>
         </div>
     );
 };

@@ -15,29 +15,35 @@ import {
 
 // We'll wrap our app with Ant Design's ConfigProvider to set the theme and App component to use the theme properly.
 import { ConfigProvider, App as AntdApp } from "antd";
-import { dataProvider } from "./providers/data-provider";
+// import { dataProvider } from "./providers/data-provider";
 import { ShowProduct } from "./pages/products/show";
 import { EditProduct } from "./pages/products/edit";
 import { ListProducts } from "./pages/products/list";
 import { CreateProduct } from "./pages/products/create";
-import { authProvider } from "./providers/auth-provider";
+// import { authProvider } from "./providers/auth-provider";
 import { Login } from "./pages/login";
 // We're importing a reset.css file to reset the default styles of the browser.
 import "antd/dist/reset.css";
 
+import PocketBase from "pocketbase";
+import { authProvider, dataProvider } from "refine-pocketbase";
+
 export default function App(): JSX.Element {
+
+  const pb = new PocketBase("http://127.0.0.1:8090/");
+
   return (
     <BrowserRouter>
       <ConfigProvider>
         <AntdApp>
           <Refine
-            dataProvider={dataProvider}
-            authProvider={authProvider}
+            dataProvider={dataProvider(pb)}
+            authProvider={authProvider(pb)}
             routerProvider={routerProvider}
             notificationProvider={useNotificationProvider}
             resources={[
               {
-                name: "protected-products",
+                name: "products",
                 list: "/products",
                 show: "/products/:id",
                 edit: "/products/:id/edit",
@@ -66,7 +72,7 @@ export default function App(): JSX.Element {
                 <Route index
                   // We're also replacing the <Navigate /> component with the <NavigateToResource /> component.
                   // It's tailored version of the <Navigate /> component that will redirect to the resource's list route.
-                  element={<NavigateToResource resource="protected-products" />}
+                  element={<NavigateToResource resource="products" />}
                 />
                 <Route path="/products">
                   <Route index element={<ListProducts />} />

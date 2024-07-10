@@ -15,18 +15,20 @@ export const ListProducts = () => {
     // We'll use pass `tableProps` to the `<Table />` component,
     // This will manage the data, pagination, filters and sorters for us.
     const { tableProps, sorters, filters } = useTable({
-        sorters: { initial: [{ field: "id", order: "asc" }] },
-        // We're adding default values for our filters
-        filters: {
-            initial: [{ field: "category.id", operator: "eq", value: 2 }],
-        },
+        // sorters: { initial: [{ field: "id", order: "asc" }] },
+        // // We're adding default values for our filters
+        // filters: {
+        //     initial: [{ field: "category.id", operator: "eq", value: 2 }],
+        // },
         syncWithLocation: true,
     });
 
     const { data: categories, isLoading } = useMany({
         resource: "categories",
-        ids: tableProps?.dataSource?.map((product) => product.category?.id) ?? [],
+        ids: tableProps?.dataSource?.map((product) => product.category) ?? [],
     });
+
+    console.log(categories)
 
     const { selectProps } = useSelect({
         resource: "categories",
@@ -56,9 +58,10 @@ export const ListProducts = () => {
                         )}
                     />
                     <Table.Column
-                        dataIndex={["category", "id"]}
+                        dataIndex="category"
                         title="Category"
                         render={(value) => {
+                            console.log("value:"+value)
                             if (isLoading) {
                                 return "Loading...";
                             }

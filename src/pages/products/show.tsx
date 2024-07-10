@@ -10,7 +10,7 @@ export const ShowProduct = () => {
 
   const { data: categoryData, isLoading: categoryIsLoading } = useOne({
     resource: "categories",
-    id: data?.data?.category.id || "",
+    id: data?.data?.category || "",
     queryOptions: {
       enabled: !!data?.data,
     },

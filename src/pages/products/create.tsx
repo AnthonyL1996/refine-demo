@@ -23,7 +23,7 @@ export const CreateProduct = () => {
         <Form.Item label="Material" name="material">
           <Input />
         </Form.Item>
-        <Form.Item label="Category" name={["category", "id"]}>
+        <Form.Item label="Category" name="category">
           <Select {...selectProps} />
         </Form.Item>
         <Form.Item label="Price" name="price">

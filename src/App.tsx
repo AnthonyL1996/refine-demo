@@ -46,7 +46,10 @@ export default function App(): JSX.Element {
               },
             ]}
           >
+
+
             <Routes>
+              
               <Route
                 element={
                   // We're wrapping our routes with the `<Authenticated />` component
@@ -63,6 +66,7 @@ export default function App(): JSX.Element {
                   </Authenticated>
                 }
               >
+
                 <Route index
                   // We're also replacing the <Navigate /> component with the <NavigateToResource /> component.
                   // It's tailored version of the <Navigate /> component that will redirect to the resource's list route.
@@ -75,6 +79,7 @@ export default function App(): JSX.Element {
                   <Route path="create" element={<CreateProduct />} />
                 </Route>
               </Route>
+
               <Route
                 element={
                   <Authenticated key="auth-pages" fallback={<Outlet />}>
@@ -86,6 +91,7 @@ export default function App(): JSX.Element {
               >
                 <Route path="/login" element={<Login />} />
               </Route>
+
             </Routes>
           </Refine>
         </AntdApp>

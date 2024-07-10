@@ -6,6 +6,8 @@ import {
     getDefaultSortOrder,
     FilterDropdown,
     useSelect,
+    CreateButton,
+    List,
 } from "@refinedev/antd";
 
 import { Table, Space, Input, Select } from "antd";
@@ -18,7 +20,7 @@ export const ListProducts = () => {
         sorters: { initial: [{ field: "id", order: "asc" }] },
         // We're adding default values for our filters
         filters: {
-            initial: [{ field: "category.id", operator: "eq", value: 2 }],
+            initial: [],
         },
         syncWithLocation: true,
     });
@@ -36,6 +38,7 @@ export const ListProducts = () => {
     return (
         <div>
             <h1>Products</h1>
+            <List headerButtons={<CreateButton />}>
                 <Table {...tableProps} rowKey="id">
                     <Table.Column
                         dataIndex="id"
@@ -90,6 +93,7 @@ export const ListProducts = () => {
                         )}
                     />
                 </Table>
+            </List>
         </div>
     );
 };

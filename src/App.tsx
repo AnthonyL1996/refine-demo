@@ -74,7 +74,6 @@ export default function App(): JSX.Element {
                   <Route path=":id/edit" element={<EditProduct />} />
                   <Route path="create" element={<CreateProduct />} />
                 </Route>
-                <Route index element={<ListProducts />} />
               </Route>
               <Route
                 element={
